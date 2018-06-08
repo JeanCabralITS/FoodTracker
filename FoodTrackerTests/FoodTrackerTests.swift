@@ -32,5 +32,31 @@ class FoodTrackerTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    //MARK: Meal Class Tests
+    func testMealInitSucceeds(){
+        // Zero Rating
+        
+        let zeroRatingMeal = Meal.init(name: "Zero", photo: nil, rating: 0 )
+        XCTAssertNotNil(zeroRatingMeal)
+        
+        // Highest positive rating
+        let poistiveRatingMeal = Meal.init(name:"Positive", photo:nil, rating: 5)
+        XCTAssertNotNil(poistiveRatingMeal)
+        
+    }
+    
+    func testMealInitFails(){
+        //Negative Rating
+        let negativeRatingMeal = Meal.init(name: "Negative", photo: nil, rating: -1 )
+        XCTAssertNil(negativeRatingMeal)
+        
+        let largeRatingMeal = Meal.init(name: "Large", photo: nil, rating: 6)
+        XCTAssertNil(largeRatingMeal)
+        
+        // Empty String
+        let emptyStringMeal = Meal.init(name: "", photo: nil, rating: 0)
+        XCTAssertNil(emptyStringMeal)
+    }
+
     
 }
